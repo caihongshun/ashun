@@ -8,6 +8,7 @@
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <!--ashun-->
     <groupId>com.ashun</groupId>
     <artifactId>boot_parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
