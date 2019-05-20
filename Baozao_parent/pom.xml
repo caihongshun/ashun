@@ -6,6 +6,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>../Baozao_web</module>
+        <module>../Baozao_service</module>
     </modules>
     <groupId>com.ashun</groupId>
     <artifactId>Baozao_parent</artifactId>

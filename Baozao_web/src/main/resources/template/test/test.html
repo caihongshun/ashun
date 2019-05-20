@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      data-layout-decorator="layout">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
-        <a th:text="${name}">11111</a>
-        <img src="http://localhost:8081/image/1.png" height="667" width="834"/></body>
+      <!--  <a th:text="${name}" id="footer">11111</a>-->
+        <!-- <img src="http://localhost:8081/image/1.png" height="667" width="834"/></body>-->
+      <!--  <div th:remove="all" >阿顺1
+            <div>1</div>
+        </div>
+        <div th:remove="tag" >阿顺2
+            <div>2</div>
+        </div>-->
+        <!--<div th:insert="commons::#commonHeader"></div>
+        <div th:replace="commons::#commonFooter"></div>
+        <div th:insert="commons::#commonFooter"></div>-->
+
+      <!--  <div data-layout-fragment="content" th:remove="tag" >
+            <a>我是首页的</a>
+        </div>-->
+      <div layout:fragment="content" th:remove="tag" >
+          <a>我是首页的</a>
+      </div>
+</body>
 </html>

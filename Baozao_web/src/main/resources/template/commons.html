@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header th:fragment="commonHeader" id="commonHeader">
+    <h2>护龙山庄</h2>
+</header>
+
+<!--定义公共的底部，这里使用 id 选择器，当然也可以用片段名，如 th:fragment="commonFooter"-->
+<footer id="commonFooter">
+    Copyright © 1998 - 2018 YYServer. All Rights Reserved
+</footer>
+</body>
+</html>

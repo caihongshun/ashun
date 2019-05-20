@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ashun.mapper.TestMapper">
+
+    <sql id="selectUser">
+        select
+        USER_ID as id,
+        USER_NAME as name,
+        USER_BIRTHDAY as birthday</sql>
+
+
+    <insert id="insert" parameterType="com.ashun.pojo.User"  ><!--useGeneratedKeys="true" keyProperty="id"-->
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into user(
+        <if test="id!=null">
+            USER_ID,
+        </if>
+        <if test="name!=null">
+            USER_NAME,
+        </if>
+        <if test="birthday!=null">
+            USER_BIRTHDAY
+        </if>
+        )values (
+        <if test="id!=null">
+            #{id},
+        </if>
+        <if test="name!=null">
+            #{name},
+        </if>
+        <if test="birthday!=null">
+            #{birthday}
+        </if>
+        )
+
+    </insert>
+
+    <!-- 根据id查询用户 -->
+	<select id="queryUserById" parameterType="long" resultType="com.ashun.pojo.User">
+        SELECT USER_ID as id,USER_NAME as name,USER_BIRTHDAY as birthday  FROM `user` WHERE USER_ID=#{id}
+		<!--<if test="beginTime!=null">
+			DATE_FORMAT(tr.add_time, '%Y-%m-%d')>=  DATE_FORMAT(#{beginTime}, '%Y-%m-%d')>
+		</if>-->
+
+    </select>
+    <select id="queryUserList" parameterType="com.ashun.pojo.User" resultType="com.ashun.pojo.User" >
+        <include refid="selectUser"></include>
+        from user
+        <where>
+            <if test="id!=null">
+                user_id=#{id}
+            </if>
+            <if test="name!=null">
+               and  user_name=#{name}
+            </if>
+            <if test="birthday!=null">
+                and <![CDATA[ DATE_FORMAT(USER_BIRTHDAY, '%Y-%m-%d')>= DATE_FORMAT(#{birthday}, '%Y-%m-%d')   ]]>
+            </if>
+
+        </where>
+
+
+
+    </select>
+
+
+
+</mapper>
